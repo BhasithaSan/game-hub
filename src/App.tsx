@@ -1,35 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
+import React from "react";
+import { Button, ButtonGroup } from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
+import NavBar from "./components/NavBar";
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Grid
+      templateAreas={`"header header"
+                  "nav main"
+                  "nav footer"`}
+      gridTemplateColumns={"150px 1fr"}
+      gap="1"
+      color="blackAlpha.700"
+      fontWeight="bold"
+    >
+      <GridItem pl="5" pr="5" bg="orange.300" area={"header"}>
+        <NavBar />
+      </GridItem>
+      <GridItem pl="2" bg="pink.300" area={"nav"}>
+        Nav
+      </GridItem>
+      <GridItem pl="2" bg="green.300" area={"main"}>
+        Main
+      </GridItem>
+      <GridItem pl="2" bg="blue.300" area={"footer"}>
+        Footer
+      </GridItem>
+    </Grid>
+  );
+};
 
-export default App
+export default App;
