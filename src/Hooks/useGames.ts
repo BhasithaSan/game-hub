@@ -4,6 +4,7 @@ import apiClient from "../services/api-client";
 export interface game {
   id: number;
   name: string;
+  background_image: string;
 }
 
 export interface fetchedGames {
@@ -26,11 +27,9 @@ export const useGames = () => {
       })
       .catch((error) => {
         if (error.name === "AbortError") {
-          // The request was aborted, no need to handle it as an error
           console.log("cancelled");
-          return;
         } else {
-          console.error("error ...");
+          console.log("error:", error.message);
           setErr(error.message);
         }
       });

@@ -9,22 +9,20 @@ const App = () => {
     <Grid
       templateAreas={`"header header"
                   "nav main"
-                  " nav footer"`}
+                  "nav footer"`}
       gridTemplateRows={"50px 1fr 30px"}
-      gridTemplateColumns={"150px 1fr"}
+      gridTemplateColumns={"100px 1fr"}
       gap="1"
       color="blackAlpha.700"
       fontWeight="bold"
     >
       <GridItem pl="5" pr="5" bg="orange.300" area={"header"}>
-        <a href="https://www.youtube.com">
-          <NavBar />
-        </a>
+        <NavBar />
       </GridItem>
       <GridItem pl="2" bg="pink.300" area={"nav"}>
         Nav
       </GridItem>
-      <GridItem pl="2" bg="green.300" area={"main"}>
+      <GridItem pl="2" area={"main"}>
         <GameGrid />
       </GridItem>
       <GridItem pl="2" bg="blue.300" area={"footer"}>
