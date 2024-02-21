@@ -1,10 +1,18 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 
+export interface platform {
+  [x: string]: any;
+  id: number;
+  name: string;
+  slug: string;
+}
+
 export interface game {
   id: number;
   name: string;
   background_image: string;
+  parent_platforms: platform[];
 }
 
 export interface fetchedGames {

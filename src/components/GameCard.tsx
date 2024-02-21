@@ -1,14 +1,8 @@
 import React from "react";
 import { game } from "../Hooks/useGames";
+import PlatFormIcon from "./platFormIcon";
 
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Image,
-  Heading,
-} from "@chakra-ui/react";
+import { Card, CardBody, Image, Heading } from "@chakra-ui/react";
 
 interface props {
   oneGame: game;
@@ -21,6 +15,7 @@ const GameCard = ({ oneGame }: props) => {
         <Image src={oneGame.background_image}></Image>
         <CardBody>
           <Heading fontSize={"1xl"}>{oneGame.name}</Heading>
+          <PlatFormIcon platforms={oneGame.parent_platforms}></PlatFormIcon>
         </CardBody>
       </Card>
     </>
