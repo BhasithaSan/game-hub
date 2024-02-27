@@ -1,6 +1,6 @@
 import React from "react";
 import { game } from "../Hooks/useGames";
-import PlatFormIcon from "./platFormIcon";
+import PlatFormIcon from "./PlatFormIcon";
 
 import { Card, CardBody, Image, Heading } from "@chakra-ui/react";
 
@@ -9,6 +9,7 @@ interface props {
 }
 
 const GameCard = ({ oneGame }: props) => {
+  // console.log(oneGame);
   return (
     <>
       <Card borderRadius={10} overflow={"hidden"}>

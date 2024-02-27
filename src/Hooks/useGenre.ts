@@ -1,27 +1,18 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
+import { game, fetchedGames } from "./useGames";
 
-export interface platform {
-  // [x: string]: any;
+interface Genre {
   id: number;
   name: string;
-  slug: string;
 }
-
-export interface game {
-  id: number;
-  name: string;
-  background_image: string;
-  parent_platforms: platform[];
-}
-
-export interface fetchedGames {
+interface FetchGenresResponse {
   count: number;
-  results: game[];
+  results: Genre[];
 }
 
-export const useGames = () => {
-  const [Games, setGames] = useState<game[]>([]);
+const useGenres = () => {
+  const [genres, setGenres] = useState<Genre[]>([]);
 
   const [err, setErr] = useState<string>();
 
@@ -30,9 +21,9 @@ export const useGames = () => {
     const abortController = new AbortController();
     setLoading(true);
     apiClient
-      .get<fetchedGames>("/games", { signal: abortController.signal })
+      .get<FetchGenresResponse>("/genres", { signal: abortController.signal })
       .then((response) => {
-        setGames(response.data.results);
+        setGenres(response.data.results);
         setLoading(false);
       })
       .catch((error) => {
@@ -47,5 +38,6 @@ export const useGames = () => {
 
     return () => abortController.abort();
   }, []);
-  return { Games, err, isLoading };
+  return { genres, err, isLoading };
 };
+export default useGenres;
