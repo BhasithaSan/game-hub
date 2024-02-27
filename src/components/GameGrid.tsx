@@ -1,11 +1,13 @@
-import { useGames, game } from "../Hooks/useGames.ts";
+import useGames, { game } from "../Hooks/useGames.ts";
 import { Text } from "@chakra-ui/react";
 import GameCard from "./GameCard.tsx";
 import { SimpleGrid } from "@chakra-ui/react";
 import GameCardSkeleton from "./GameCardSkeleton.tsx";
+import { useData } from "../Hooks/useData.ts";
+
 export const GameGrid = () => {
   //const [games, setGames] = useState<game[]>([]);
-  const { Games, err, isLoading } = useGames();
+  const { Data, err, isLoading } = useGames();
   const skeletonArray = [];
   if (isLoading) {
     for (let i = 0; i < 10; i++) {
@@ -22,7 +24,7 @@ export const GameGrid = () => {
     >
       {err && <Text>{err}</Text>}
       {isLoading && skeletonArray}
-      {Games.map((game: game) => (
+      {Data?.map((game: game) => (
         <GameCard key={game.id} oneGame={game}></GameCard>
       ))}
     </SimpleGrid>

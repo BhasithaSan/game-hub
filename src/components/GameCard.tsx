@@ -12,7 +12,7 @@ const GameCard = ({ oneGame }: props) => {
   // console.log(oneGame);
   return (
     <>
-      <Card borderRadius={10} overflow={"hidden"}>
+      <Card borderRadius={10} overflow={"hidden"} width={"100%"}>
         <Image src={oneGame.background_image}></Image>
         <CardBody>
           <Heading fontSize={"1xl"}>{oneGame.name}</Heading>

@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import apiClient from "../services/api-client";
+import { useData } from "./useData";
 
 export interface platform {
   // [x: string]: any;
@@ -20,32 +19,10 @@ export interface fetchedGames {
   results: game[];
 }
 
-export const useGames = () => {
-  const [Games, setGames] = useState<game[]>([]);
+const useGames = () => {
+  const { Data, err, isLoading } = useData<game>("/games");
 
-  const [err, setErr] = useState<string>();
-
-  const [isLoading, setLoading] = useState<boolean>();
-  useEffect(() => {
-    const abortController = new AbortController();
-    setLoading(true);
-    apiClient
-      .get<fetchedGames>("/games", { signal: abortController.signal })
-      .then((response) => {
-        setGames(response.data.results);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setLoading(false);
-        if (error.name === "AbortError") {
-          console.log("cancelled");
-        } else {
-          console.log("error:", error.message);
-          setErr(error.message);
-        }
-      });
-
-    return () => abortController.abort();
-  }, []);
-  return { Games, err, isLoading };
+  return { Data, err, isLoading };
 };
+
+export default useGames;
