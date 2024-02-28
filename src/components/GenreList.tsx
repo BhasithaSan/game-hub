@@ -9,8 +9,10 @@ import {
   Button,
 } from "@chakra-ui/react";
 import useGenres, { Genre } from "../Hooks/useGenre";
+import { GameQuery } from "../App";
 
 interface prop {
+  selectGenre: Genre;
   onSelectGenre: (genre: Genre) => void;
 }
 

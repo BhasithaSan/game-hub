@@ -18,7 +18,7 @@ const Order = () => {
       <MenuButton as={Button} rightIcon={<FaChevronDown />}>
         Order By
       </MenuButton>
-      <MenuList>
+      <MenuList color={"white"}>
         <MenuItem>Relavance</MenuItem>
         <MenuItem>Date Added</MenuItem>
         <MenuItem>Name</MenuItem>

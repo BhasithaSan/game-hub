@@ -1,8 +1,9 @@
+import { GameQuery } from "../App";
 import { Platform, useData } from "./useData";
 import { Genre } from "./useGenre";
 
 export interface platform {
-  // [x: string]: any;
+  [x: string]: any;
   id: number;
   name: string;
   slug: string;
@@ -19,23 +20,20 @@ export interface fetchedGames {
   count: number;
   results: game[];
 }
-interface prop {
-  selectedGenre?: Genre | null;
-}
+// interface prop {
+//   gameQuery: GameQuery;
+// }
 
-const useGames = (
-  selectedGenre: Genre | null,
-  selectedPlatform: Platform | null
-) => {
+const useGames = (gameQuery: GameQuery) => {
   const { Data, err, isLoading } = useData<game>(
     "/games",
     {
       params: {
-        genres: selectedGenre?.id,
-        platforms: selectedPlatform?.id,
+        genres: gameQuery.genre?.id,
+        platforms: gameQuery.platform?.id,
       },
     },
-    [selectedGenre?.id, selectedPlatform?.id]
+    [gameQuery]
   );
 
   return { Data, err, isLoading };
