@@ -10,9 +10,11 @@ import Order from "./components/Order";
 import PlatformSelector from "./components/PlatformSelector";
 import { Platform } from "./Hooks/useData";
 
+import "./App.css";
 export interface GameQuery {
   genre: Genre;
   platform: Platform;
+  search: string;
 }
 
 const App = () => {
@@ -33,7 +35,9 @@ const App = () => {
       fontWeight="bold"
     >
       <GridItem pl="5" pr="5" area="nav">
-        <NavBar />
+        <NavBar
+          onSearch={(search: string) => setGameQuery({ ...gameQuery, search })}
+        />
       </GridItem>
       <Show above="lg">
         <GridItem pl="2" area="aside" paddingX={5}>
