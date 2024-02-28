@@ -32,7 +32,7 @@ const App = () => {
       color="blackAlpha.700"
       fontWeight="bold"
     >
-      <GridItem pl="5" pr="5" bg="orange.300" area="nav">
+      <GridItem pl="5" pr="5" area="nav">
         <NavBar />
       </GridItem>
       <Show above="lg">
