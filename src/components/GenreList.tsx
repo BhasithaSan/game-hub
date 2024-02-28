@@ -6,10 +6,15 @@ import {
   Text,
   Spacer,
   Spinner,
+  Button,
 } from "@chakra-ui/react";
-import useGenres from "../Hooks/useGenre";
+import useGenres, { Genre } from "../Hooks/useGenre";
 
-const GenreList = () => {
+interface prop {
+  onSelectGenre: (genre: Genre) => void;
+}
+
+const GenreList = ({ onSelectGenre }: prop) => {
   const { Data, isLoading } = useGenres();
   return (
     <List>
@@ -23,7 +28,16 @@ const GenreList = () => {
               borderRadius={8}
             />
 
-            <Text>{genre.name}</Text>
+            <Button
+              whiteSpace="normal"
+              textAlign="left"
+              // fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+              onClick={() => onSelectGenre(genre)}
+              fontSize="md"
+              variant="link"
+            >
+              {genre.name}
+            </Button>
           </HStack>
         </ListItem>
       ))}

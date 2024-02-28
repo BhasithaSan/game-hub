@@ -1,4 +1,5 @@
-import { useData } from "./useData";
+import { Platform, useData } from "./useData";
+import { Genre } from "./useGenre";
 
 export interface platform {
   // [x: string]: any;
@@ -18,9 +19,24 @@ export interface fetchedGames {
   count: number;
   results: game[];
 }
+interface prop {
+  selectedGenre?: Genre | null;
+}
 
-const useGames = () => {
-  const { Data, err, isLoading } = useData<game>("/games");
+const useGames = (
+  selectedGenre: Genre | null,
+  selectedPlatform: Platform | null
+) => {
+  const { Data, err, isLoading } = useData<game>(
+    "/games",
+    {
+      params: {
+        genres: selectedGenre?.id,
+        platforms: selectedPlatform?.id,
+      },
+    },
+    [selectedGenre?.id, selectedPlatform?.id]
+  );
 
   return { Data, err, isLoading };
 };

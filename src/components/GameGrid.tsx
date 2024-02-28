@@ -3,11 +3,21 @@ import { Text } from "@chakra-ui/react";
 import GameCard from "./GameCard.tsx";
 import { SimpleGrid } from "@chakra-ui/react";
 import GameCardSkeleton from "./GameCardSkeleton.tsx";
-import { useData } from "../Hooks/useData.ts";
+import { Platform, useData } from "../Hooks/useData.ts";
+import { Genre } from "../Hooks/useGenre.ts";
 
-export const GameGrid = () => {
+interface GameGridProps {
+  selectedGenre: Genre | null;
+  selectedPlatform: Platform | null;
+}
+
+export const GameGrid = ({
+  selectedGenre,
+  selectedPlatform,
+}: GameGridProps) => {
   //const [games, setGames] = useState<game[]>([]);
-  const { Data, err, isLoading } = useGames();
+
+  const { Data, err, isLoading } = useGames(selectedGenre, selectedPlatform);
   const skeletonArray = [];
   if (isLoading) {
     for (let i = 0; i < 10; i++) {
@@ -17,7 +27,7 @@ export const GameGrid = () => {
 
   return (
     <SimpleGrid
-      columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
+      columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
       gap={6}
       spacing={10}
       padding={10}
