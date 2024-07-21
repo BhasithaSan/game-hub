@@ -5,11 +5,11 @@ import bullEye from '../assets/Emojis/bulls-eye.webp';
 import thumbsUp from '../assets/Emojis/thumbs-up.webp';
 import meh from '../assets/Emojis/meh.webp';
 
-interface Props {
+interface props {
   rating: number;
 }
 
-const Emoji: React.FC<Props> = ({ rating }) => {
+const Emoji= ({ rating }:props) => {
   if (rating < 3) return null;
 
   const emojiMap: { [key: number]: ImageProps } = {
