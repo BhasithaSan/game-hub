@@ -24,6 +24,8 @@ const SearchInput = ({ onSearch }: prop) => {
           placeholder="Seach Games"
           variant={"filled"}
           ref={ref}
+          
+
         />
       </InputGroup>
     </form>
