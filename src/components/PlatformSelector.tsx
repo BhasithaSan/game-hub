@@ -1,5 +1,4 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
-import React from "react";
 import { FaChevronDown } from "react-icons/fa";
 import usePlatform from "../Hooks/usePlatform";
 import { Platform } from "../Hooks/useData";
@@ -11,7 +10,10 @@ interface prop {
 }
 
 const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: prop) => {
-  const { Data } = usePlatform();
+  const { Data,err } = usePlatform();
+  if (err){
+    return null;
+  }
 
   return (
     <Menu>

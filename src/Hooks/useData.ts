@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
-import { Axios, AxiosRequestConfig } from "axios";
+import { AxiosRequestConfig } from "axios";
 
 export interface Platform {
   id: number;
