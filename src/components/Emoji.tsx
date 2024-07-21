@@ -1,4 +1,3 @@
-import React from 'react';
 import { Image, ImageProps } from '@chakra-ui/react';
 
 import bullEye from '../assets/Emojis/bulls-eye.webp';
