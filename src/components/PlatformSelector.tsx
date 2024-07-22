@@ -1,4 +1,4 @@
-import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
+import { Button, Menu, MenuButton, MenuItem, MenuList, useColorMode } from "@chakra-ui/react";
 import { FaChevronDown } from "react-icons/fa";
 import usePlatform from "../Hooks/usePlatform";
 import { Platform } from "../Hooks/useData";
@@ -14,13 +14,15 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: prop) => {
   if (err){
     return null;
   }
-
+  const { colorMode, toggleColorMode } = useColorMode();
+  
+  const color = { light: "gray.800", dark: "white" };
   return (
     <Menu>
-      <MenuButton as={Button} rightIcon={<FaChevronDown />}>
+      <MenuButton as={Button} rightIcon={<FaChevronDown />} color={color[colorMode]}>
         {selectedPlatform ? selectedPlatform?.name : "Platform"}
       </MenuButton>
-      <MenuList>
+      <MenuList color={color[colorMode]}>
         {Data?.map((platform) => (
           <MenuItem
             key={platform.id}
