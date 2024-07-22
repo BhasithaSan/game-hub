@@ -14,7 +14,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: prop) => {
   if (err){
     return null;
   }
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode } = useColorMode();
   
   const color = { light: "gray.800", dark: "white" };
   return (

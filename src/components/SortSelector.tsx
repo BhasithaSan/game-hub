@@ -30,7 +30,7 @@ const SortSelector = ({onSelectSortOrder,selectedItem}:props) => {
   ]
 
   const currentSortOrder = sortOrder.find(order => order.value===selectedItem)
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode } = useColorMode();
   
   const color = { light: "gray.800", dark: "white" };
 
