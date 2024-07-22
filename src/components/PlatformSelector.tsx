@@ -1,4 +1,4 @@
-import { Button, Menu, MenuButton, MenuItem, MenuList, useColorMode } from "@chakra-ui/react";
+import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { FaChevronDown } from "react-icons/fa";
 import usePlatform from "../Hooks/usePlatform";
 import { Platform } from "../Hooks/useData";
