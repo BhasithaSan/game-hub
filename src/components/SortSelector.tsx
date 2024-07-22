@@ -6,7 +6,7 @@ import {
   MenuItem,
 
   Button,
-  useColorMode,
+ 
 } from "@chakra-ui/react";
 import { FaChevronDown } from "react-icons/fa6";
 
@@ -30,16 +30,14 @@ const SortSelector = ({onSelectSortOrder,selectedItem}:props) => {
   ]
 
   const currentSortOrder = sortOrder.find(order => order.value===selectedItem)
-  const { colorMode } = useColorMode();
-  
-  const color = { light: "gray.800", dark: "white" };
+ 
 
   return (
     <Menu>
-      <MenuButton as={Button} rightIcon={<FaChevronDown />} color={color[colorMode]}>
+      <MenuButton as={Button} rightIcon={<FaChevronDown />}>
         order by: {currentSortOrder?.label || "Relevance"}
       </MenuButton>
-      <MenuList color={color[colorMode]}>
+      <MenuList >
         {sortOrder.map(order =><MenuItem onClick={()=>onSelectSortOrder(order.value)}key={order.value} value={order.value}>{order.label}</MenuItem>)}
       </MenuList>
     </Menu>

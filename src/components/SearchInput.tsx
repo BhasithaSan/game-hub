@@ -1,4 +1,4 @@
-import { Input, InputGroup, InputLeftElement, useColorMode } from "@chakra-ui/react";
+import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { useRef } from "react";
 import { BsSearch } from "react-icons/bs";
 
@@ -8,9 +8,7 @@ interface prop {
 
 const SearchInput = ({ onSearch }: prop) => {
   const ref = useRef<HTMLInputElement>(null);
-  const { colorMode } = useColorMode();
-  
-  const color = { light: "gray.800", dark: "white" };
+
 
   
   return (
@@ -30,7 +28,7 @@ const SearchInput = ({ onSearch }: prop) => {
           variant={"filled"}
           ref={ref}
 
-          color={color[colorMode]}
+         
 
         />
       </InputGroup>

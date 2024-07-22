@@ -14,15 +14,13 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: prop) => {
   if (err){
     return null;
   }
-  const { colorMode } = useColorMode();
-  
-  const color = { light: "gray.800", dark: "white" };
+
   return (
     <Menu>
-      <MenuButton as={Button} rightIcon={<FaChevronDown />} color={color[colorMode]}>
+      <MenuButton as={Button} rightIcon={<FaChevronDown />} >
         {selectedPlatform ? selectedPlatform?.name : "Platform"}
       </MenuButton>
-      <MenuList color={color[colorMode]}>
+      <MenuList >
         {Data?.map((platform) => (
           <MenuItem
             key={platform.id}
