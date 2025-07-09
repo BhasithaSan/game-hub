@@ -6,9 +6,11 @@ import {
   MenuItem,
 
   Button,
+  useColorModeValue,
  
 } from "@chakra-ui/react";
 import { FaChevronDown } from "react-icons/fa6";
+import MenuColors from "../Colors/menuColors";
 
 interface props {
   onSelectSortOrder:(sortOrder:string)=>void
@@ -29,16 +31,29 @@ const SortSelector = ({onSelectSortOrder,selectedItem}:props) => {
 
   ]
 
+  const menuBg = useColorModeValue(MenuColors.menuBg.light, MenuColors.menuBg.dark);
+  const menuColor = useColorModeValue(MenuColors.menuColor.light, MenuColors.menuColor.dark );
+  const hoverBg = useColorModeValue(MenuColors.hoverBg.light, MenuColors.hoverBg.dark);
+
+
   const currentSortOrder = sortOrder.find(order => order.value===selectedItem)
  
 
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<FaChevronDown />}>
-        order by: {currentSortOrder?.label || "Relevance"}
+        order by : {currentSortOrder?.label || "Relevance"}
       </MenuButton>
       <MenuList >
-        {sortOrder.map(order =><MenuItem onClick={()=>onSelectSortOrder(order.value)}key={order.value} value={order.value}>{order.label}</MenuItem>)}
+        {sortOrder.map(order =><MenuItem 
+                                  onClick={()=>onSelectSortOrder(order.value)}
+                                  key={order.value} 
+                                  value={order.value}
+                                  bg={menuBg} color={menuColor}
+                                  _hover={{ bg: hoverBg }}>
+                                    {order.label}
+                                 
+                                 </MenuItem>)}
       </MenuList>
     </Menu>
   );

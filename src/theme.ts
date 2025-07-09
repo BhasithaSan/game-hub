@@ -1,5 +1,5 @@
 // theme.ts
-import { extendTheme, ThemeConfig } from "@chakra-ui/react";
+import { extendTheme, StyleFunctionProps, ThemeConfig } from "@chakra-ui/react";
 
 
 const config: ThemeConfig = {
@@ -10,9 +10,20 @@ const config: ThemeConfig = {
 const customTheme = extendTheme({
   config,
  
- 
-  colors: {
-    // Define your custom colors here
+styles: {
+    global: (props : StyleFunctionProps) => ({
+      body: {
+        color: props.colorMode === "dark" ? "gray.100" : "gray.800",
+        bg: props.colorMode === "dark" ? "gray.900" : "white",
+      },
+    }),
+  },
+   components: {
+    Heading: {
+      baseStyle: (props: StyleFunctionProps) => ({
+        color: props.colorMode === "dark" ? "gray.100" : "gray.800",
+      }),
+    },
   },
 });
 

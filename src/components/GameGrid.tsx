@@ -1,5 +1,5 @@
 import useGames, { game } from "../Hooks/useGames.ts";
-import {  Text } from "@chakra-ui/react";
+import {  Heading,Flex } from "@chakra-ui/react";
 import GameCard from "./GameCard.tsx";
 import { SimpleGrid } from "@chakra-ui/react";
 import GameCardSkeleton from "./GameCardSkeleton.tsx";
@@ -15,6 +15,9 @@ export const GameGrid = ({ gameQuery }: GameGridProps) => {
   //const [games, setGames] = useState<game[]>([]);
 
   const { Data, err, isLoading } = useGames(gameQuery);
+
+  console.log("Data", Data);
+  console.log("err", err);
   const skeletonArray = [];
   if (isLoading) {
     for (let i = 0; i < 10; i++) {
@@ -22,8 +25,19 @@ export const GameGrid = ({ gameQuery }: GameGridProps) => {
     }
   }
   if(err){
-    return   <Text>{err}</Text>
+    return(  
+     <Flex justify="center" align="center" h="80vh">
+        <Heading>Error Occured while fetching</Heading>
+      </Flex>
+    )
   }
+if(Data?.length  === 0 && !isLoading){
+     return (
+      <Flex justify="center" align="center" h="80vh">
+        <Heading>No Games Available...</Heading>
+      </Flex>
+     );
+    }
 
   return (
     <SimpleGrid

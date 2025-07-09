@@ -10,12 +10,12 @@ const rootElement = document.getElementById('root');
 if (rootElement) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
-    <React.StrictMode>
+    
       <ChakraProvider  theme={customTheme}>
         <ColorModeScript initialColorMode={customTheme.config.initialColorMode}/>
         <App />
       </ChakraProvider>
-    </React.StrictMode>
+   
   );
 } else {
   console.error('Root element not found');

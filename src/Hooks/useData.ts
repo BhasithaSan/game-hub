@@ -27,11 +27,16 @@ export const useData = <T>(
 ) => {
   const [Data, setData] = useState<T[]>();
 
-  const [err, setErr] = useState<string>();
+  const [err, setErr] = useState<string|null>(null);
 
-  const [isLoading, setLoading] = useState<boolean>();
+  const [isLoading, setLoading] = useState<boolean>(false);
+
   useEffect(
+    
+
     () => {
+    setLoading(true);
+    setErr(null);
       const abortController = new AbortController();
       setLoading(true);
       apiClient
